@@ -1,0 +1,14 @@
+.breadcrumb-container {
+   background-image: url("../../asstes/breadcrumb1.jpg");
+   object-fit: cover;
+   height: 200px;
+}
+
+.breadcrumb-container  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.breadcrumb-container h1 {
+    color: black;
+}

@@ -1,0 +1,17 @@
+.dish-name {
+    margin: 5em auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.dish-name li {
+    list-style-type: none;
+}
+
+.dish-name li a {
+    text-decoration: none;
+    color: black;
+}
+

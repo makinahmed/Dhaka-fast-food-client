@@ -1,0 +1,22 @@
+.sign-up {
+margin: 2em auto;
+}
+.sign-up h2{
+margin: 0 auto;
+color: black;
+}
+
+.sign-up form {
+padding: 1em;
+height: 450px;
+background-color: #f6f6f6;
+display: flex;
+flex-direction: column;
+align-items: left;
+text-align: left;
+justify-content: space-between;
+}
+.sign-up form input {
+padding: .5em;
+
+}

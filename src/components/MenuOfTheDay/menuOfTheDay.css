@@ -1,0 +1,33 @@
+.menu-cart {
+border-radius: 10px;
+text-align: left;
+max-height: 40vh;
+border: 1px solid rgb(224, 218, 218);
+display: flex;
+justify-self: start;
+align-items: center;
+background-color: #fff9ea;
+}
+.menu-img{
+max-height: 100%;
+} 
+.menu-cart img {
+max-width: 30vh;
+max-height: auto;
+}
+.motd-cart-text {
+    color: #808080;
+}
+.motd-cart-text h3 {
+    color: black;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+}
+.menu-shop-icon {
+    display: flex;
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: 1em;
+}
+

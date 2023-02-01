@@ -1,0 +1,15 @@
+.feature-cart {
+    border: 1px dashed rgb(189, 185, 185) ;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+.feature-text {
+    margin: 0 2em;
+}
+.feature-cart h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}

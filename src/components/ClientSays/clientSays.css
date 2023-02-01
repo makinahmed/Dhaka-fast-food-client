@@ -1,0 +1,46 @@
+.client-says-container {
+background-color:#fff9ea;
+text-align: left;
+ 
+}
+.client-says-cart {
+   
+}
+
+.c-cart {
+    background-color: #fff;
+ padding: 1.5em;
+}
+.client-says-container p {
+    color:#808080;
+}
+.client-img {
+width: 5vw;
+height: 10vh;
+border-radius: 50%;
+}
+.client-img img {
+width: 100%;
+height: 100%;
+border-radius: 50%;
+}
+.client-says-header {
+display: flex;
+justify-content: space-between;
+}
+.client-profile {
+display: flex;
+
+}
+.client-name {
+    margin-left: 1.5em;
+}
+.client-rating {
+   color: #fae678;
+}
+
+.client-says-container {
+    margin: 2em 0;
+    padding: 5em 0;
+    overflow-x: hidden;
+}

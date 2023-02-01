@@ -1,0 +1,79 @@
+.t-container {
+    height: 45rem;
+    padding: 2em;
+    background-color: #00A149;
+    background-image: url("../../asstes/trending-1.png");
+    background-position:contain;
+    background-repeat: no-repeat;
+    background-position: -70% 300%;
+}
+.t-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.t-title h2{
+    font-family: 'Norican';
+    font-weight: 700;
+    font-size: 4.2rem;
+    line-height: 4.5rem;
+    color: white;
+}
+.t-title h1{
+    font-size: 9rem;
+    font-weight: 700;
+    line-height: 12rem;
+    color: #ffcd02;
+}
+.t-title p{
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.6rem;
+    text-transform: uppercase;
+
+}
+.t-title span {
+    color: #ffcd02;
+    font-size: 4rem;
+    line-height: 4.5rem;
+    font-weight: 700;
+
+}
+.t-title button {
+    background-color: white;
+    color: #000;
+    padding: 1em 2.5em;
+    border: none;
+    border-radius: .2em;
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 2em;
+}
+.trending-container{
+ background-image: url("../../asstes/trending-4.png");
+   background-position:  -70% 300% ;
+background-size: 0%;
+}
+.trending-container:hover {
+background-size: cover;
+ 
+    
+}
+
+.t-container2{
+    background-color:#db731e;
+    background-image: url("../../asstes/trending-2.png");
+    background-position:  -600% 80%;
+}
+
+.t-container3{
+    background-color:#ffcd02;
+    background-image: url("../../asstes/trending-3.png");
+    background-position: -25% 50% ;
+    
+     
+}
+.t-container3 h1 {
+    color: #cd4414;
+}

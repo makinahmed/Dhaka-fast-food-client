@@ -1,0 +1,42 @@
+.footer-section {
+margin-top: 5em;
+}
+.footer-container {
+    background-color:black;
+    color: white;
+    padding: 5em 1em;
+}
+.footer-container span{
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.7rem;
+}
+.footer-container h1{
+    color:  white;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+.email {
+    
+    margin: 0;
+    padding: 0;
+    
+}
+.email input{
+    border: none;
+    padding: .49em;
+    font-style: 3rem;
+    width: 220px;
+    outline: none;
+    border-radius: 2px;
+    margin-right: -10px;
+}
+.email button{
+    background-color: #ffc222;
+    border: none;
+    padding: .5em;
+    border-radius: 5px;
+    margin: 0;
+}
+ 

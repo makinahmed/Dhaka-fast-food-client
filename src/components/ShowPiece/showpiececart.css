@@ -1,0 +1,24 @@
+.showpiece {
+background-color:#f7f2e2;
+margin: .5em 0;
+padding: 2em;
+}
+.cart-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: white;
+padding: 2em;
+}
+.cart-texts {
+text-align: left;
+}
+.cart-title {
+font-size: 2.8rem;
+font-weight: 700;
+}
+.cart-text {
+font-weight: 400;
+font-size: 1.2rem;
+}
+

@@ -1,0 +1,34 @@
+.categories-container {
+border: 1px solid #808080;
+border-radius: 5px;
+padding: 2em .5em;
+background-color: #fcf7e9;
+
+
+}
+.categories-container h2{
+    
+color: black;
+font-size: 2rem;
+font-weight: 700;
+}
+.categories-cart {
+
+
+text-align: left;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.categories-cart li {
+margin: .3em;
+list-style-type: none;
+color: #808080;
+font-size: 1.4;
+font-weight: 400;
+line-height: 2.4rem;
+}
+.categories-cart li span {
+color: black;
+padding: 2em;
+}
