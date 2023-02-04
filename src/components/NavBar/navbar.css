@@ -27,9 +27,21 @@ text-decoration: none;
 color: black;
 }
 
+.logo {
+    position: absolute;
+    left: 0;
+    top: -15px;
+    height: 15rem;
+}
 
-@media screen and (max-width: 600px) {
-
+.logo img {
+    max-width: 100%;
+    height: auto; 
+}
+@media screen and (max-width: 730px) {
+.navigation-bar h2 {
+    display: flex;
+}
 .cross-btn,.hamburger-btn {
 padding: -1em .5em;
 background-color: black;
@@ -40,7 +52,6 @@ border-radius: .1em;
 font-weight: 700;
 visibility: visible;
 }
-
 nav ul{
 background-color: rgb(42, 158, 158);
 position: fixed;
@@ -53,7 +64,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 transition: 1s;
-transform: translateX(-100vh);
+transform: translateX(-150vh);
 } 
 .hamburger-btn {
     opacity: 1;

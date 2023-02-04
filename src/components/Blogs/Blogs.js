@@ -5,7 +5,7 @@ import SuggestedBlogCart from "../SuggestedBlogCart/SuggestedBlogCart";
 
 function Blogs() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid my-5">
       <div className="row">
         <div className="col-sm-12 col-md-8 border rounded p-0">
           {/* <BlogsCart /> */}

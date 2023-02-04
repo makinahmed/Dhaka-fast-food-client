@@ -8,10 +8,13 @@
 }
 .dish-name li {
     list-style-type: none;
-}
-
-.dish-name li a {
+    margin: 0 .5em;
     text-decoration: none;
     color: black;
+    background-color: #ffc222;
+    padding: 1em 2em;
+    border-radius: .5em;
+    cursor: pointer;
 }
+ 
 

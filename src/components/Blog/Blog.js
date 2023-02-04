@@ -2,7 +2,7 @@ import React from 'react';
 import blog6 from "../../asstes/blog-6.jpg";
 function Blog( ) {
     return (
-      <div className="">
+      <div className="p-3">
         <img className="rounded shadow img-fluid" src={blog6} alt="" />
         <h1 className="text-dark my-5">
           10 Reasons To Do A Digital Detox Challenge

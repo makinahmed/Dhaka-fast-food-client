@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../features/auth/authSlice";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
-
+import logo from '../../asstes/logo.png';
 function Navbar() {
    
   const navRef = useRef();
@@ -31,7 +31,9 @@ function Navbar() {
       </button>
       <nav>
         <ul ref={navRef}>
-          <h2>Dhaka Fast Food</h2>
+          <div className="logo d-flex  ">
+            <img className="" src={logo} alt="" />
+          </div>
           <li>
             <Link to="/">Home</Link>
           </li>

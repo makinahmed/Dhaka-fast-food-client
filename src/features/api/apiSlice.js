@@ -4,6 +4,11 @@ export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
   endpoints: (builder) => ({
+    getProducts: builder.query({
+      query: () => ({
+        url: "products",
+      }),
+    }),
     postProduct: builder.mutation({
       query: (data) => ({
         url: "addproduct",
@@ -14,4 +19,19 @@ export const productApi = createApi({
   }),
 });
 
-const {usePostProductMutation} = productApi;
+export const blogApi = createApi({
+  reducerPath: "blogApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  endpoints: (builder) => ({
+    postBlog: builder.mutation({
+      query: (data) => ({
+        url: "addblog",
+        body: data,
+        method: "POST",
+      }),
+    }),
+  }),
+});
+
+export const { usePostProductMutation,  useGetProductsQuery } = productApi;
+export const { usePostBlogMutation } = blogApi;

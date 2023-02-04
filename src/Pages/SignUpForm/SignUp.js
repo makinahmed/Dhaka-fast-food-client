@@ -4,19 +4,20 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserApiMutation } from "../../features/api/userSlice";
 function SignUpForm() {
   const dispatch = useDispatch();
-   const navigate = useNavigate();
-
-   const { email, isLoading } = useSelector((state) => state?.auth);
+  const navigate = useNavigate();
+  const [postUser] = useUserApiMutation();
+  const { email, isLoading } = useSelector((state) => state?.auth);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     dispatch(createUser(data));
+    postUser(data);
   };
   useEffect(() => {
     if (!isLoading && email) {
@@ -30,7 +31,6 @@ function SignUpForm() {
           <form onSubmit={handleSubmit(onSubmit)} className="w-md-50 w-sm-100 ">
             <h2 className=" ">Create a new account</h2>
             <label htmlFor="firstname">First Name</label>
-
             <input
               id="firstname"
               defaultValue=""

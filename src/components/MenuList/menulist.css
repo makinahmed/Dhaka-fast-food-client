@@ -6,6 +6,9 @@
 .menu-img {
     width: 100px;
 }
+.menu-img {
+   display: inline-block;
+}
 .menu-img img {
     width: 100%;
     height: 100%;
