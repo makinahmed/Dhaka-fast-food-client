@@ -1,7 +1,10 @@
 import React from "react";
 import "./homebanner.css";
 import bannerImg from "../../asstes/h1-banner.png";
+import { Link, useNavigate } from "react-router-dom";
 function HomeBanner() {
+  const navigate = useNavigate()
+
   return (
     <div className="home-banner-container">
       <div className="h-banner-text">
@@ -16,7 +19,7 @@ function HomeBanner() {
           <p>*Additional charge for premium toppings. Minimum of 2 required.</p>
         </div>
         <div className="banner-btns">
-          <button>Order Now</button>
+          <Link to="/menu">Order Now</Link>
           <span className="b-price">$12.99</span>
         </div>
       </div>

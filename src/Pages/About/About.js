@@ -1,9 +1,10 @@
 import React from 'react';
+import Checkout from '../../components/Checkout/Checkout';
 
 function About( ) {
     return (
         <div>
-            <h2>I am About</h2>
+           <Checkout/>
         </div>
     );
 }

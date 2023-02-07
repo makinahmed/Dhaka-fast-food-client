@@ -1,12 +1,14 @@
-.dish-name {
+.dish-name  {
     margin: 5em auto;
     width: 50%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    
 }
 .dish-name li {
+    width: 13rem;
+    text-align: center;
     list-style-type: none;
     margin: 0 .5em;
     text-decoration: none;
@@ -17,4 +19,13 @@
     cursor: pointer;
 }
  
+@media  screen and (max-width: 730px) {
+    .dish-name {
+        height: 50vh;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+}
 

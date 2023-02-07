@@ -1,7 +1,7 @@
 .breadcrumb-container {
    background-image: url("../../asstes/breadcrumb1.jpg");
    object-fit: cover;
-   height: 200px;
+   height: 40vh;
 }
 
 .breadcrumb-container  {
@@ -11,4 +11,9 @@
 }
 .breadcrumb-container h1 {
     color: black;
+    font-size: 8rem;
+}
+
+.breadcrumb-img {
+    height: 50vh;
 }

@@ -64,7 +64,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 transition: 1s;
-transform: translateX(-150vh);
+transform: translateX(-15000vh);
 } 
 .hamburger-btn {
     opacity: 1;

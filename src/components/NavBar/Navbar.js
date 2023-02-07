@@ -17,6 +17,7 @@ function Navbar() {
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
+    console.log('show');
   };
   const handleSignOut = () => {
     signOut(auth).then(() => {

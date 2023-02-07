@@ -14,7 +14,7 @@ function Trending() {
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
               <span>$19.90</span>
-              <button>ORDER NOW</button>
+              <button className="">ORDER NOW</button>
             </div>
           </div>
         </div>
@@ -31,9 +31,9 @@ function Trending() {
           </div>
         </div>
         <div className="col-md-12 col-lg-4 t-container3 t-container">
-          <div className="trending-container3">
+          <div className="trending-container3  ">
             <div className="t-title">
-              <h2>Hot Fresh</h2>
+              <h2 className="slide">Hot Fresh</h2>
               <h1>Salats</h1>
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>

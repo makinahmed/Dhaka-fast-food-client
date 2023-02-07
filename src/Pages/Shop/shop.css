@@ -1,0 +1,30 @@
+.shop-container {
+margin-top: 5em;
+}
+.shop-page {
+position: relative;
+}
+.left-nav {
+display: none;
+position: fixed;
+top: 18vh;
+left: 0;
+}
+
+@media screen and (max-width: 730px) {
+.left-nav{
+display: block;
+z-index: 5;
+position: fixed;
+}
+.category-container {
+position: fixed;
+top: 12vh;
+transition: 1s;
+transform: translateX(-150vh);
+}
+.res_show_left_bar {
+    transform: none;
+}
+
+}

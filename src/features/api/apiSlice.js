@@ -30,8 +30,13 @@ export const blogApi = createApi({
         method: "POST",
       }),
     }),
+    getBlog: builder.query({
+      query: () => ({
+        url: "blog",
+      }),
+    }),
   }),
 });
 
-export const { usePostProductMutation,  useGetProductsQuery } = productApi;
-export const { usePostBlogMutation } = blogApi;
+export const { usePostProductMutation, useGetProductsQuery } = productApi;
+export const { usePostBlogMutation,useGetBlogQuery } = blogApi;

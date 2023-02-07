@@ -15,8 +15,8 @@ text-align: left;
     color:#808080;
 }
 .client-img {
-width: 5vw;
-height: 10vh;
+width: 5rem;
+height: auto;
 border-radius: 50%;
 }
 .client-img img {

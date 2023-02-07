@@ -1,0 +1,18 @@
+.pagination {
+    margin-top: 2em;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.pagination a {
+    text-decoration: none;
+    color: black;
+}
+
+.next,.previous {
+    width: 8em;
+   border: 1px solid black;
+   text-decoration: none;
+    
+}

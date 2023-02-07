@@ -1,0 +1,20 @@
+.shopping-cart-container {
+border-top: 1px solid gray ;
+border-bottom: 1px solid gray ;
+border-radius: 2px;
+padding: 1em 0;
+text-align: center;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+.cart-imgg {
+display: block;
+max-width: 10rem;
+}
+.cross {
+display: block;
+padding: 0 .4em;
+border: 1px solid gray;
+border-radius: 50% 50%;
+}
