@@ -1,14 +1,12 @@
 export const makeSubTotal = (cartProducts) => {
-  cartProducts?.map(product => {
+  return cartProducts?.map((product) => {
     let price = product.currentPrice;
-      let quantity = product.quantity;
-      let subTotal = price * quantity;
-      
+    let quantity = parseInt(product.quantity);
+    let subTotal = price * quantity;
+
     return subTotal;
   });
 };
-
- 
 
 export const makeTotal = (totalPrice) => {
   return totalPrice?.reduce((p, c) => {
@@ -17,3 +15,12 @@ export const makeTotal = (totalPrice) => {
 };
 
 
+export const productDiscount = (product) => {
+  const price = product.Price;
+  const discount = product.discount;
+  const prevPrice = parseFloat(price);
+  const discountFloat = parseFloat(discount);
+  let totalDiscountAmount = (price * discountFloat) / 100;
+  let currentPrice = prevPrice - totalDiscountAmount;
+  return { prevPrice, currentPrice };
+};

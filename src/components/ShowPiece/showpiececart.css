@@ -21,7 +21,12 @@ font-weight: 700;
 font-weight: 400;
 font-size: 1.2rem;
 }
-
+.cart-item1{
+    background-image: url(../../asstes/cart-ite1.jpg);
+}
+.d1 {
+    height: 15rem;
+}
 @media screen and (max-width: 730px){
 .cart-container {
 margin: 2em 0;

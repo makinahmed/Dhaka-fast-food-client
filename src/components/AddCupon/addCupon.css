@@ -1,0 +1,4 @@
+.cupon input,.discount input{
+    min-width: 100%;
+    margin: .5em auto;
+}

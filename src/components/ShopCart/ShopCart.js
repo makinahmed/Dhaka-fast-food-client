@@ -1,12 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useGetCuponQuery, usePostCuponMutation } from "../../features/api/apiSlice";
 import { makeSubTotal, makeTotal } from "../../functions/functions";
 import ShoppingCartContainer from "../ShoppingCartContainer/ShoppingCartContainer";
 import "./shopCart.css";
 function ShopCart() {
+  
   const cartProducts = useSelector((state) => state?.cart?.cart);
   const subtotal = makeSubTotal(cartProducts)
-  const total = makeTotal(subtotal);
+  const total = makeTotal(subtotal );
+  
   return (
     <div className="container-fluid">
       <div className="row g-5">
@@ -40,20 +44,19 @@ function ShopCart() {
               </h2>
             </div>
 
-            <div>
+            {/* <div>
               <h2 className="my-5">CUPON</h2>
               <h2 className="my-5">
-                <input className="w-50 ms-5" type="text" />
+                <input  className="w-50 ms-5" type="text" />
               </h2>
               <button className="h-50 my-auto apply-btn text-center">APPLY</button>
-            </div>
-
+            </div> */}
             <div>
               <h2>Total</h2>
-              <h2>Price</h2>
+              <h2>{total}</h2>
             </div>
           </div>
-          <button className="proceed-btn">PROCEED TO CHECKOUT</button>
+          <Link to="/checkout"  className="proceed-btn">PROCEED TO CHECKOUT</Link>
         </div>
       </div>
     </div>

@@ -52,6 +52,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />}>
             <Route index path="addblog" element={<AddBlogs />} />
             <Route path="addproduct" element={<AddProducts />} />
+            
           </Route>
         </Route>
       </Routes>

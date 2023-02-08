@@ -7,9 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../features/auth/authSlice";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
-import logo from '../../asstes/logo.png';
+import logo from "../../asstes/logo.png";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { addToCart } from "../../features/api/cartSlice";
 function Navbar() {
-   
   const navRef = useRef();
   const dispatch = useDispatch();
 
@@ -17,12 +18,17 @@ function Navbar() {
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
-    console.log('show');
+    console.log("show");
   };
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(logOut());
     });
+  };
+
+  const handleOnclick = () => {
+    const cart = document.querySelector(".shop-cart-container");
+    cart.classList.add("hide_cart");
   };
 
   return (
@@ -55,6 +61,16 @@ function Navbar() {
           </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <AiOutlineShoppingCart
+              onClick={() => handleOnclick()}
+              style={{
+                fontSize: "5rem",
+                borderRadius: "5px",
+                padding: "10px",
+              }}
+            />
           </li>
           <li>
             {email && <button onClick={handleSignOut}>Log out</button>}

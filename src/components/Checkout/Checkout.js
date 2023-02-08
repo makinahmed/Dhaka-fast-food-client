@@ -1,6 +1,8 @@
 import React from "react";
 import "./checkout.css";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { makeSubTotal, makeTotal } from "../../functions/functions";
 function Checkout() {
     const {
       register,
@@ -9,7 +11,9 @@ function Checkout() {
       formState: { errors },
     } = useForm();
     const onSubmit = (data) => console.log(data);
-
+    const cartProducts = useSelector(state=>state?.cart?.cart)
+    const subTotal = makeSubTotal(cartProducts);
+  const total = makeTotal(subTotal);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="container-fluid">
       <div className="row">
@@ -96,7 +100,7 @@ function Checkout() {
                 id="email"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="coupon">Coupon</label>
               <input
                 {...register("coupon", { required: true })}
@@ -104,7 +108,7 @@ function Checkout() {
                 placeholder="If you have"
                 id="coupon"
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="col-sm-12 col-md-5">
@@ -113,49 +117,18 @@ function Checkout() {
               <h3>Product(s)</h3>
               <h3>$Subtotal</h3>
             </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
-            <div>
-              <span>Red Velvet Cake * quantity</span>
-              <span>Price</span>
-            </div>
+            {cartProducts?.map((product) => (
+              <div>
+                <span>
+                  {product?.firsttitle} x {product?.quantity}
+                </span>
+                <span>${product?.currentPrice * product?.quantity}</span>
+              </div>
+            ))}
+
             <div>
               <h3>Subtotal</h3>
-              <h3>$Amount</h3>
+              <h3>${total}</h3>
             </div>
             <div>
               <h3>Shipping</h3>
@@ -182,7 +155,7 @@ function Checkout() {
             </div>
             <div>
               <h3>Total</h3>
-              <h3>$Amount</h3>
+              <h3>${total}</h3>
             </div>
             <div>
               <h3>Payment</h3>

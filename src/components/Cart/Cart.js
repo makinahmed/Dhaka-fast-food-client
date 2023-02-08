@@ -23,7 +23,6 @@ function Cart() {
           <RxCross1 />
         </span>
       </div>
-
       <div className="only-cart">
         {cartProducts?.map((product) => (
           <div className="shopping-cart ">

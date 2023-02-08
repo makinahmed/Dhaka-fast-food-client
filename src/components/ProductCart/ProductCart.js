@@ -2,27 +2,19 @@ import React, { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/api/cartSlice";
+import { productDiscount } from "../../functions/functions";
 
 import "./productCart.css";
 function ProductCart({ product }) {
-  const dispatch = useDispatch()
-  let prevPrice;
-  let discount = product?.discount;
-  if (product?.price) {
-    prevPrice = parseFloat(product?.price);
-  }
-  if (product?.Price) {
-    prevPrice = parseFloat(product?.Price);
-  }
-  let totalDiscountAmount = (prevPrice * discount) / 100;
-  let currentPrice = prevPrice - totalDiscountAmount;
-  product = {...product,currentPrice,prevPrice}
+  const dispatch = useDispatch();
+
+  const price = productDiscount(product);
+  product = { ...product, ...price };
+  console.log(product,'product');
   const handleOnclick = (p) => {
-    
     dispatch(addToCart(p));
     const cart = document.querySelector(".shop-cart-container");
     cart.classList.add("hide_cart");
-    
   };
   return (
     <div className="product-cart">
@@ -41,8 +33,8 @@ function ProductCart({ product }) {
 
         <div className="cart-bottom">
           <div className="product-price">
-            <h3 className="prev-price">${prevPrice}</h3>
-            <h3 className="current-price ">${currentPrice}</h3>
+            <h3 className="prev-price">${price?.prevPrice}</h3>
+            <h3 className="current-price ">${price?.currentPrice}</h3>
           </div>
 
           <AiOutlineShoppingCart
