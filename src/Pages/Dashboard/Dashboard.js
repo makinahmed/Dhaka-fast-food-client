@@ -1,10 +1,15 @@
-import React from "react";
-import {   Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 import AddCupon from "../../components/AddCupon/AddCupon";
- 
+import "./dashboard.css";
 import SideNav from "../../components/SideNav/SideNav";
+import { usePostCuponMutation } from "../../features/api/apiSlice";
+import { toast } from "react-hot-toast";
+import Banner from "../../components/Banner/Banner";
 
 function Dashboard() {
+  
+
   return (
     <div className="container">
       <div className="row g-5">
@@ -12,10 +17,7 @@ function Dashboard() {
           <SideNav />
         </div>
         <div className="col-sm-9">
-          {/* <h2 className="text-center">ADD COUPON</h2>
-          <div className="d-flex justify-content-center">
-            <AddCupon />
-          </div> */}
+         
           <Outlet />
         </div>
       </div>

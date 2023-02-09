@@ -1,5 +1,6 @@
 import React from "react";
-import blog6 from "../../asstes/blog-6.jpg";
+import { Link } from "react-router-dom";
+ 
 import './blogsCart.css';
 function BlogsCart({ blog }) {
    
@@ -8,7 +9,7 @@ function BlogsCart({ blog }) {
       <img className="img-fluid" src={blog?.image} alt="" />
       <h1 className="my-5 text-dark fw-bolder">{blog?.firsttitle}</h1>
       <p>{blog?.firstdescription?.slice(0,250)}....</p>
-      <button className="my-5">READ MORE</button>
+      <Link to={`/blog/${blog._id}`} className="my-5">READ MORE</Link>
     </div>
   );
 }

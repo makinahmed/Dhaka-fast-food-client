@@ -1,20 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./navbar.css";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { RxCross1 } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../features/auth/authSlice";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import logo from "../../asstes/logo.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { addToCart } from "../../features/api/cartSlice";
+import toast from "react-hot-toast";
+
 function Navbar() {
   const navRef = useRef();
   const dispatch = useDispatch();
 
-  const { email, isLoading } = useSelector((state) => state?.auth);
+  const { email } = useSelector((state) => state?.auth);
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -23,7 +24,12 @@ function Navbar() {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(logOut());
+      if (!email) {
+        toast.success("Log Out Successfully!", { id: "logout" });
+      }
+      
     });
+    Navigate("/login");
   };
 
   const handleOnclick = () => {
@@ -59,9 +65,11 @@ function Navbar() {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+          {email && (
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          )}
           <li>
             <AiOutlineShoppingCart
               onClick={() => handleOnclick()}
@@ -74,7 +82,7 @@ function Navbar() {
           </li>
           <li>
             {email && <button onClick={handleSignOut}>Log out</button>}
-            {!email && <Link to="/signup">Sign Up</Link>}
+            {!email && <Link to="/login">Log In</Link>}
           </li>
           <button onClick={showNavbar} className="cross-btn">
             <RxCross1 />

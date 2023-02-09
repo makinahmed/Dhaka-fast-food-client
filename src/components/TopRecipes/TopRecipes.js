@@ -1,13 +1,7 @@
 import React from "react";
 import "./topRecipes.css";
-import toprecepie1 from "../../asstes/top-recepie1.png";
-import toprecepie2 from "../../asstes/top-recepie2.png";
-import toprecepie3 from "../../asstes/top-recepie3.png";
-import toprecepie4 from "../../asstes/top-recepie4.png";
-import toprecepie5 from "../../asstes/top-recepie5.png";
-import toprecepie6 from "../../asstes/top-recepie6.png";
 import delicousRecepie from "../../asstes/delicious-chicken.jpg";
-import { AiOutlineRight, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
 import { useGetProductsQuery } from "../../features/api/apiSlice";
 import TopRecipeCart from "../TopRecipeCart/TopRecipeCart";
 import { Link } from "react-router-dom";

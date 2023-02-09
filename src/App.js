@@ -1,5 +1,5 @@
-import { Provider, useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes, useNavigate,  } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/Navbar";
@@ -10,6 +10,7 @@ import Menu from "./Pages/Menu/Menu";
 import Shop from "./Pages/Shop/Shop";
 import SignUpForm from "./Pages/SignUpForm/SignUp";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "./firebase/firebase.config";
 import { setUser } from "./features/auth/authSlice";
@@ -19,11 +20,12 @@ import AddProducts from "./components/AddProduct/AddProducts";
 import Blogs from "./Pages/Blogs/Blogs";
 import Contact from "./Pages/Contact/Contact";
 import Checkout from "./components/Checkout/Checkout";
-import ViewCart from "./components/ViewCart/ViewCart";
-import Cart from "./components/Cart/Cart";
 import ShopCart from "./components/ShopCart/ShopCart";
- 
- 
+import Blog from "./components/Blog/Blog";
+ import NotFound from "./components/NotFound/NotFound";
+import PrivateOutlet from "./Routes/PrivateOutlet";
+import { RotatingLines } from "react-loader-spinner";
+import AddCupon from "./components/AddCupon/AddCupon";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,30 +36,39 @@ function App() {
       }
     });
   }, []);
+
+  const { email } = useSelector((state) => state?.auth);
+ 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/signup" element={<SignUpForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/blog" element={<Blogs />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/Cart" element={<ShopCart />} />
-        <Route>
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route index path="addblog" element={<AddBlogs />} />
-            <Route path="addproduct" element={<AddProducts />} />
-            
+    <>
+      <Toaster />
+      <BrowserRouter>
+        <Navbar />
+
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/blog" element={<Blogs />} />
+          <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/*" element={<PrivateOutlet />}>
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route path="addblog" element={<AddBlogs />} />
+              <Route path="addproduct" element={<AddProducts />} />
+              <Route path="addcupon" element={<AddCupon />} />
+            </Route>
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="Cart" element={<ShopCart />} />
           </Route>
-        </Route>
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

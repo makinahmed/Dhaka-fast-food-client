@@ -1,6 +1,7 @@
 import React from "react";
 import "./trending.css";
 import trending1 from "../../asstes/trending-1.png";
+import { Link } from "react-router-dom";
 
 function Trending() {
   return (
@@ -14,7 +15,7 @@ function Trending() {
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
               <span>$19.90</span>
-              <button className="">ORDER NOW</button>
+              <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>
         </div>
@@ -26,7 +27,7 @@ function Trending() {
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
               <span>$12.90</span>
-              <button>ORDER NOW</button>
+              <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>
         </div>
@@ -38,7 +39,7 @@ function Trending() {
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
               <span>$10.90</span>
-              <button>ORDER NOW</button>
+              <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>
         </div>

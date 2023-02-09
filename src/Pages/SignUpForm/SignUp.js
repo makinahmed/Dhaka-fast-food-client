@@ -5,11 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserApiMutation } from "../../features/api/userSlice";
+import { toast } from "react-hot-toast";
 function SignUpForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [postUser] = useUserApiMutation();
-  const { email, isLoading } = useSelector((state) => state?.auth);
+  const { email, isLoading, isSuccess, isError } = useSelector(
+    (state) => state?.auth
+  );
+
   const {
     register,
     handleSubmit,
@@ -18,14 +22,24 @@ function SignUpForm() {
   const onSubmit = (data) => {
     dispatch(createUser(data));
     postUser(data);
+    if (isLoading) {
+      toast.loading("Loading....", { id: "register" });
+    }
+    if (isSuccess) {
+      toast.success("You have Successfully Registered!", { id: "register" });
+    }
+    if (isError) {
+      toast.error("Registration Failed", { id: "register" });
+    }
   };
+
   useEffect(() => {
     if (!isLoading && email) {
       navigate("/");
     }
   }, [email]);
   return (
-    <div className="container">
+    <div className="container sign-up-container">
       <div className="row">
         <div className="col-sm-12 col-md-5 sign-up ">
           <form onSubmit={handleSubmit(onSubmit)} className="w-md-50 w-sm-100 ">

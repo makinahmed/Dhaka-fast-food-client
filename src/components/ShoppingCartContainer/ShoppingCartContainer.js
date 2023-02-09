@@ -18,7 +18,7 @@ function ShoppingCartContainer({ product }) {
         X 
       </span>
       <img className="cart-imgg" src={product?.image} alt="" />
-      <span>{product?.currentPrice.toFixed(2)}</span>
+      <span>{product?.currentPrice?.toFixed(2)}</span>
       <span>
         <input
           className="w-25"

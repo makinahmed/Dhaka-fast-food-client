@@ -10,8 +10,7 @@ function ProductCart({ product }) {
 
   const price = productDiscount(product);
   product = { ...product, ...price };
-  console.log(product,'product');
-  const handleOnclick = (p) => {
+   const handleOnclick = (p) => {
     dispatch(addToCart(p));
     const cart = document.querySelector(".shop-cart-container");
     cart.classList.add("hide_cart");

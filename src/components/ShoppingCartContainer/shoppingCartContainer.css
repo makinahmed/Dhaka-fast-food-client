@@ -17,4 +17,5 @@ display: block;
 padding: 0 .4em;
 border: 1px solid gray;
 border-radius: 50% 50%;
+cursor: pointer;
 }

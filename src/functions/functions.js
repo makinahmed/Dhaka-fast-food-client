@@ -9,11 +9,12 @@ export const makeSubTotal = (cartProducts) => {
 };
 
 export const makeTotal = (totalPrice) => {
-  return totalPrice?.reduce((p, c) => {
-    return p + c;
-  }, 0).toFixed(2);
+  return totalPrice
+    ?.reduce((p, c) => {
+      return p + c;
+    }, 0)
+    .toFixed(2);
 };
-
 
 export const productDiscount = (product) => {
   const price = product.Price;
@@ -23,4 +24,41 @@ export const productDiscount = (product) => {
   let totalDiscountAmount = (price * discountFloat) / 100;
   let currentPrice = prevPrice - totalDiscountAmount;
   return { prevPrice, currentPrice };
+};
+
+export const cuponDiscount = (cupon, total) => {
+  let discount = parseInt(cupon.discount);
+  let amount = (total * discount) / 100;
+
+  return total - amount;
+};
+
+/// Sorting ....
+
+export const sorting = (products, category) => {
+  console.log( category,'parameter');
+  let data = products;
+  let sortAtoZ;
+  let sortRating;
+  let sortPrice;
+  if (category === "A to Z") {
+    console.log(products, '"A to Z"');
+    sortAtoZ = products.sort((a, b) =>
+      a.category.toLowerCase() > b.category.toLowerCase() ? 1 : -1
+    );
+    console.log(sortAtoZ, "A to Z");
+    return sortAtoZ;
+  }
+
+  if (category === "Price") {
+    sortPrice = products.sort((a, b) =>
+      parseInt(a.Price) > parseInt(b.Price) ? 1 : -1
+    );
+    return sortPrice;
+  }
+  if (category === "Rating")
+    sortRating = products.sort((a, b) =>
+      parseInt(a.Rating) > parseInt(b.Rating) ? 1 : -1
+    );
+  return sortRating;
 };

@@ -4,6 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeSubTotal, makeTotal  } from "../../functions/functions";
+import Empty from "../Empty/Empty";
 
 function Cart() {
   const shopRef = useRef();
@@ -23,6 +24,7 @@ function Cart() {
           <RxCross1 />
         </span>
       </div>
+      {!cartProducts?.length && <Empty title="No Cart Added!"/>}
       <div className="only-cart">
         {cartProducts?.map((product) => (
           <div className="shopping-cart ">

@@ -3,7 +3,7 @@ import { GiFullPizza, GiHamburger, GiPopcorn } from "react-icons/gi";
 import { MdCoffeeMaker } from "react-icons/md";
 import { FaRandom } from "react-icons/fa";
 import "./cateogries.css";
-function Cateogries() {
+function Cateogries({data}) {
   return (
     <div className="categories-container">
       <h2>Categories</h2>

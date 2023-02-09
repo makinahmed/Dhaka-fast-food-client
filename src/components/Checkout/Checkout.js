@@ -3,6 +3,7 @@ import "./checkout.css";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { makeSubTotal, makeTotal } from "../../functions/functions";
+import { usePostSoldProductMutation } from "../../features/api/apiSlice";
 function Checkout() {
     const {
       register,
@@ -10,7 +11,10 @@ function Checkout() {
       watch,
       formState: { errors },
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const [postSoldProduct,{isLoading,isSuccess}] = usePostSoldProductMutation()
+  const onSubmit = (data) => {
+      postSoldProduct(data)
+    }
     const cartProducts = useSelector(state=>state?.cart?.cart)
     const subTotal = makeSubTotal(cartProducts);
   const total = makeTotal(subTotal);
@@ -82,7 +86,7 @@ function Checkout() {
               <input
                 {...register("phone", {
                   required: true,
-                  pattern: /^(\+\d{1,3}[- ]?)?\d{11}$/,
+                   
                 })}
                 type="text"
                 id="phone"

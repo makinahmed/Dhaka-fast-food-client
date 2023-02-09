@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../features/auth/authSlice';
 import './loginform.css';
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
    
-   const { email, isLoading } = useSelector((state) => state?.auth);
+   const { email, isLoading,isError,isSuccess } = useSelector((state) => state?.auth);
     const {
       register,
       handleSubmit,
@@ -17,6 +18,16 @@ function LoginForm() {
     } = useForm();
     const onSubmit = (data) => {
       dispatch(loginUser(data));
+       if (isLoading) {
+         toast.loading("Loading....", { id: "login" });
+       }
+       if (isSuccess) {
+         toast.success("You have Successfully Logged In!", { id: "login" });
+       }
+       if (isError) {
+         toast.error("Login Failed", { id: "register" });
+       }
+      Navigate("/")
     };
   
   useEffect(() => {

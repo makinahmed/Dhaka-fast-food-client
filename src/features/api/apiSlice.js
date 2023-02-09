@@ -38,32 +38,41 @@ export const blogApi = createApi({
   }),
 });
 
+export const soldApi = createApi({
+  reducerPath: "soldApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  endpoints: (builder) => ({
+    postSoldProduct: builder.mutation({
+      query: (data) => ({
+        url: "sold",
+        body: data,
+        method: "POST",
+      }),
+    }),
+  }),
+});
+
 export const cuponApi = createApi({
   reducerPath: "cuponApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  tagTypes: ["Cupons"],
   endpoints: (builder) => ({
+    getCupon: builder.query({
+      query: () => ({ url: "cupon" }),
+      providesTags: ["Cupons"],
+    }),
     postCupon: builder.mutation({
       query: (body) => ({
         url: "cupon",
         body,
         method: "POST",
       }),
-    }),
-    getCupon: builder.query({
-      query: () => ({
-        url: "cupon",
-        method: 'POST'
-      }),
-    }),
-    deleteCupon: builder.mutation({
-      query: () => ({
-        url: "cupon",
-        method: "DELETE",
-      }),
+      invalidatesTags: ["Cupons"],
     }),
   }),
 });
  
 export const { usePostProductMutation, useGetProductsQuery } = productApi;
 export const { usePostBlogMutation, useGetBlogQuery } = blogApi;
+export const {usePostSoldProductMutation} = soldApi;
 export const { usePostCuponMutation,useDeleteCuponMutation,useGetCuponQuery } = cuponApi;
