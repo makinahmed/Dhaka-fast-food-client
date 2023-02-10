@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import AddCupon from "../../components/AddCupon/AddCupon";
+import React from "react";
+import {  Outlet } from "react-router-dom";
 import "./dashboard.css";
 import SideNav from "../../components/SideNav/SideNav";
-import { usePostCuponMutation } from "../../features/api/apiSlice";
-import { toast } from "react-hot-toast";
-import Banner from "../../components/Banner/Banner";
+import AdminRouteOutlet from "../../Routes/AdminRouteOutLet";
 
 function Dashboard() {
   
@@ -17,8 +14,7 @@ function Dashboard() {
           <SideNav />
         </div>
         <div className="col-sm-9">
-         
-          <Outlet />
+         <Outlet/>
         </div>
       </div>
     </div>

@@ -1,11 +1,17 @@
 import React from 'react';
-import Checkout from '../../components/Checkout/Checkout';
+import AboutBanner from '../../components/AboutBanner/AboutBanner';
+import Banner from '../../components/Banner/Banner';
+import Chefs from '../../components/Chefs/Chefs';
+import Offer from '../../components/Offer/Offer';
+ 
 
 function About( ) {
     return (
-        <div>
-           <Checkout/>
-        </div>
+      <div>
+        <Banner title="About Us"  />
+        <AboutBanner/>
+        <Chefs/>
+      </div>
     );
 }
 

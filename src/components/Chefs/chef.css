@@ -1,0 +1,48 @@
+.chef {
+    border: 1px solid gray;
+
+}
+.chef img {
+    width: 100%;
+}
+.chef-text {
+    
+    position: relative;
+    padding: 1em;
+}
+
+.chef-text span {
+    color: #888888;
+}
+
+.chef-text h2 {
+    margin-top: 1em;
+    font-weight: bolder;
+}
+.position {
+    position: absolute;
+    top: -1em;
+    left: 45%;
+    background-color: #ffc222;
+    color: black;
+    padding: .5em .2em;
+    width: 6rem;
+    border-radius: .3em;
+
+}
+.always-quality {
+    font-family: 'Norican';
+font-weight: 200;
+font-size: 4.2rem;
+line-height: 4.5rem;
+color:  #ffc222;
+}
+
+.talent {
+    font-weight: 700;
+    font-size: 5rem;
+    margin: 1rem auto;
+}
+.chef:hover{
+    filter: grayscale(1);
+}

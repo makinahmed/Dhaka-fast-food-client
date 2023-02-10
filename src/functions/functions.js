@@ -37,28 +37,27 @@ export const cuponDiscount = (cupon, total) => {
 
 export const sorting = (products, category) => {
   console.log( category,'parameter');
-  let data = products;
+  let data = [...products];
   let sortAtoZ;
-  let sortRating;
-  let sortPrice;
+  
   if (category === "A to Z") {
-    console.log(products, '"A to Z"');
-    sortAtoZ = products.sort((a, b) =>
-      a.category.toLowerCase() > b.category.toLowerCase() ? 1 : -1
+  
+    data = data?.sort((a, b) =>
+      a?.firsttitle?.toLowerCase() > b?.firsttitle?.toLowerCase() ? 1 : -1
     );
-    console.log(sortAtoZ, "A to Z");
-    return sortAtoZ;
+    console.log(data, "A to Z");
+    return data;
   }
 
   if (category === "Price") {
-    sortPrice = products.sort((a, b) =>
-      parseInt(a.Price) > parseInt(b.Price) ? 1 : -1
+    data = data?.sort((a, b) =>
+      parseInt(a?.Price) > parseInt(b?.Price) ? 1 : -1
     );
-    return sortPrice;
+    return data;
   }
   if (category === "Rating")
-    sortRating = products.sort((a, b) =>
-      parseInt(a.Rating) > parseInt(b.Rating) ? 1 : -1
+    data = data.sort((a, b) =>
+      parseInt(a?.Rating) > parseInt(b?.Rating) ? 1 : -1
     );
-  return sortRating;
+  return data;
 };

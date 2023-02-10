@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addToCart } from "../../features/api/cartSlice";
 
 function TopRecipeCart({ product }) {
@@ -28,7 +29,9 @@ const handleOnclick = (product) => {
           <img src={product?.image} alt="" />
         </div>
         <div className="recepie-text">
-          <h3 className="recepie-title fw-bold">{product?.firsttitle}</h3>
+          <Link to={`/product/${product._id}`} className="recepie-title fw-bold text-decoration-none text-dark">
+            {product?.firsttitle}
+          </Link>
           <p className="text-muted">{product?.category}</p>
           <span className="text-decoration-line-through pe-5 fw-bold">
             ${prevPrice}

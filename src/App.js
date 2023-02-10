@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, useNavigate,  } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/Navbar";
@@ -22,10 +22,12 @@ import Contact from "./Pages/Contact/Contact";
 import Checkout from "./components/Checkout/Checkout";
 import ShopCart from "./components/ShopCart/ShopCart";
 import Blog from "./components/Blog/Blog";
- import NotFound from "./components/NotFound/NotFound";
+import NotFound from "./components/NotFound/NotFound";
 import PrivateOutlet from "./Routes/PrivateOutlet";
 import { RotatingLines } from "react-loader-spinner";
 import AddCupon from "./components/AddCupon/AddCupon";
+import Product from "./components/Product/Product";
+import AdminRouteOutlet from "./Routes/AdminRouteOutLet";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,17 +40,17 @@ function App() {
   }, []);
 
   const { email } = useSelector((state) => state?.auth);
- 
+
   return (
     <>
       <Toaster />
       <BrowserRouter>
         <Navbar />
-
         <Routes>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -57,13 +59,42 @@ function App() {
           <Route path="/blog" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/*" element={<PrivateOutlet />}>
-            <Route path="dashboard" element={<Dashboard />}>
-              <Route path="addblog" element={<AddBlogs />} />
-              <Route path="addproduct" element={<AddProducts />} />
-              <Route path="addcupon" element={<AddCupon />} />
-            </Route>
             <Route path="checkout" element={<Checkout />} />
             <Route path="Cart" element={<ShopCart />} />
+          </Route>
+
+          <Route
+            path="dashboard"
+            element={
+              <AdminRouteOutlet>
+                <Dashboard />
+              </AdminRouteOutlet>
+            }
+          >
+            <Route
+              path="addblog"
+              element={
+                <AdminRouteOutlet>
+                  <AddBlogs />
+                </AdminRouteOutlet>
+              }
+            />
+            <Route
+              path="addproduct"
+              element={
+                <AdminRouteOutlet>
+                  <AddProducts />
+                </AdminRouteOutlet>
+              }
+            />
+            <Route
+              path="addcupon"
+              element={
+                <AdminRouteOutlet>
+                  <AddCupon />
+                </AdminRouteOutlet>
+              }
+            />
           </Route>
         </Routes>
         <Footer />

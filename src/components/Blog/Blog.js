@@ -5,7 +5,7 @@ function Blog() {
   let { id } = useParams();
   const { data, isLoading } = useGetBlogQuery();
   const blog = data?.find(blog => blog._id === id);
-  console.log(blog,'blog');
+   
     return (
       <div className="p-3 offset-3 text-center mx-auto">
         <img className="rounded shadow img-fluid" src={blog?.image} alt="" />

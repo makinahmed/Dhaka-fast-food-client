@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
+import Rating from "react-rating";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addToCart } from "../../features/api/cartSlice";
 import { productDiscount } from "../../functions/functions";
+import empty from "../../asstes/empty.png";
+import fill from "../../asstes/fill.png";
 
 import "./productCart.css";
 function ProductCart({ product }) {
@@ -22,12 +26,33 @@ function ProductCart({ product }) {
       </div>
       <div className="product-cart-text">
         <div>
-          <AiOutlineStar />
-          <AiOutlineStar />
-          <AiOutlineStar />
-          <AiOutlineStar />
+          <Rating
+            placeholderRating={product?.Rating}
+            emptySymbol={
+              <img src={empty} style={{ height: "20px", width: "20px" }} />
+            }
+            placeholderSymbol={
+              <img
+                src={fill}
+                className="icon"
+                style={{ height: "20px", width: "20px" }}
+              />
+            }
+            fullSymbol={
+              <img
+                src={fill}
+                className="icon"
+                style={{ height: "20px", width: "20px" }}
+              />
+            }
+          />
         </div>
-        <h1 className="fs-3 text-dark">{product?.firsttitle}</h1>
+        <Link
+          to={`/product/${product?._id}`}
+          className="fs-3 text-dark text-decoration-none"
+        >
+          {product?.firsttitle}
+        </Link>
         <p>{product?.description}</p>
 
         <div className="cart-bottom">

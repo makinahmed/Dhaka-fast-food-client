@@ -7,7 +7,7 @@ import { RotatingLines } from "react-loader-spinner";
 
 import { useGetBlogQuery } from "../../features/api/apiSlice";
 import "./blogs.css";
-import { useNavigate } from "react-router-dom";
+ 
 import Banner from "../../components/Banner/Banner";
 function Blogs() {
   const { data, isLoading,isSuccess } = useGetBlogQuery();

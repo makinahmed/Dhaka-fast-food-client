@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 function Navbar() {
   const navRef = useRef();
   const dispatch = useDispatch();
-
+ let adminEmail = "admin@gmail.com";
   const { email } = useSelector((state) => state?.auth);
 
   const showNavbar = () => {
@@ -65,7 +65,7 @@ function Navbar() {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          {email && (
+          {email === adminEmail && (
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>

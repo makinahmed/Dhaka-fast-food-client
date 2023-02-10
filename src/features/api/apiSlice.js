@@ -3,11 +3,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  tagTypes: ["Products"],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => ({
         url: "products",
       }),
+      providesTags: ["Products"],
     }),
     postProduct: builder.mutation({
       query: (data) => ({
@@ -15,6 +17,7 @@ export const productApi = createApi({
         body: data,
         method: "POST",
       }),
+      invalidatesTags: ["Products"],
     }),
   }),
 });
@@ -29,6 +32,7 @@ export const blogApi = createApi({
         body: data,
         method: "POST",
       }),
+      providesTags: ["Cupons"],
     }),
     getBlog: builder.query({
       query: () => ({
@@ -55,11 +59,13 @@ export const soldApi = createApi({
 export const cuponApi = createApi({
   reducerPath: "cuponApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
-  tagTypes: ["Cupons"],
+  
   endpoints: (builder) => ({
-    getCupon: builder.query({
-      query: () => ({ url: "cupon" }),
-      providesTags: ["Cupons"],
+    checkCupon: builder.query({
+      query: (data) => ({
+        url: "checkcupon",
+        body:data,
+      }),
     }),
     postCupon: builder.mutation({
       query: (body) => ({
@@ -67,12 +73,15 @@ export const cuponApi = createApi({
         body,
         method: "POST",
       }),
-      invalidatesTags: ["Cupons"],
     }),
   }),
 });
- 
+
 export const { usePostProductMutation, useGetProductsQuery } = productApi;
 export const { usePostBlogMutation, useGetBlogQuery } = blogApi;
-export const {usePostSoldProductMutation} = soldApi;
-export const { usePostCuponMutation,useDeleteCuponMutation,useGetCuponQuery } = cuponApi;
+export const { usePostSoldProductMutation } = soldApi;
+export const {
+  usePostCuponMutation,
+  useDeleteCuponMutation,
+  useCheckCuponQuery
+} = cuponApi;

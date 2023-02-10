@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useDeleteCuponMutation, useGetCuponQuery, usePostCuponMutation } from "../../features/api/apiSlice";
+ 
 import "./addCupon.css";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { usePostCuponMutation } from "../../features/api/apiSlice";
 
 function AddCupon() {
  const [cupon, setCupon] = useState({});

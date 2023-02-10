@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  useGetCuponQuery,
-  usePostCuponMutation,
-} from "../../features/api/apiSlice";
+import { useCheckCuponQuery  } from "../../features/api/apiSlice";
+ 
 import {
   cuponDiscount,
   makeSubTotal,
@@ -15,7 +13,7 @@ import ShoppingCartContainer from "../ShoppingCartContainer/ShoppingCartContaine
 import "./shopCart.css";
 function ShopCart() {
   const [cupon, setCupon] = useState();
-  const {  data,isLoading, isSuccess, } = useGetCuponQuery();
+  const { data, isLoading, isSuccess } = useCheckCuponQuery({cupon});
   const cartProducts = useSelector((state) => state?.cart?.cart);
   const subtotal = makeSubTotal(cartProducts);
   const total = makeTotal(subtotal);
@@ -25,15 +23,18 @@ function ShopCart() {
 
   let discountForCupon;
   const onClickHandler = () => {
-    if (isSuccess && cupon === data?.cupon) {
-      discountForCupon = cuponDiscount(total, cupon);
-    }
+  
+    if (isSuccess) {
+      console.log(data);
+   }
   };
-//   useEffect(() => {
-//   console.log(data,'dddddddddddd');
-// },[])
-isLoading && console.log("object");
-isSuccess && console.log("2");
+  useEffect(() => {
+    if (!isLoading) {
+      console.log(" ");
+    }
+  });
+  isLoading && console.log("object");
+  isSuccess && console.log("2");
   return (
     <div className="container-fluid">
       <div className="row g-5">
@@ -65,7 +66,7 @@ isSuccess && console.log("2");
               </h2>
             </div>
 
-            {/* <div>
+            <div>
               <h2 className="my-5">CUPON</h2>
               <h2 className="my-5">
                 <input
@@ -80,7 +81,7 @@ isSuccess && console.log("2");
               >
                 APPLY
               </button>
-            </div> */}
+            </div>
             <div>
               <h2>Vat:</h2>
               <h2>${0}</h2>
