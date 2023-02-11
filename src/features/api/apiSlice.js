@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productApi = createApi({
   reducerPath: "productApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+  }),
   tagTypes: ["Products"],
   endpoints: (builder) => ({
     getProducts: builder.query({
@@ -24,7 +26,9 @@ export const productApi = createApi({
 
 export const blogApi = createApi({
   reducerPath: "blogApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+  }),
   endpoints: (builder) => ({
     postBlog: builder.mutation({
       query: (data) => ({
@@ -44,7 +48,9 @@ export const blogApi = createApi({
 
 export const soldApi = createApi({
   reducerPath: "soldApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+  }),
   endpoints: (builder) => ({
     postSoldProduct: builder.mutation({
       query: (data) => ({
@@ -58,13 +64,15 @@ export const soldApi = createApi({
 
 export const cuponApi = createApi({
   reducerPath: "cuponApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
-  
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+  }),
+
   endpoints: (builder) => ({
     checkCupon: builder.query({
       query: (data) => ({
         url: "checkcupon",
-        body:data,
+        body: data,
       }),
     }),
     postCupon: builder.mutation({
