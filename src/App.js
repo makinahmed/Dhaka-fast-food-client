@@ -24,10 +24,10 @@ import ShopCart from "./components/ShopCart/ShopCart";
 import Blog from "./components/Blog/Blog";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateOutlet from "./Routes/PrivateOutlet";
-import { RotatingLines } from "react-loader-spinner";
 import AddCupon from "./components/AddCupon/AddCupon";
 import Product from "./components/Product/Product";
 import AdminRouteOutlet from "./Routes/AdminRouteOutLet";
+import Payment from "./components/stripe/Payment";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +40,7 @@ function App() {
   }, []);
 
   const { email } = useSelector((state) => state?.auth);
+
 
   return (
     <>
@@ -59,8 +60,9 @@ function App() {
           <Route path="/blog" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/*" element={<PrivateOutlet />}>
+            <Route path="cart" element={<ShopCart />} />
+            <Route path="payment" element={<Payment />} />
             <Route path="checkout" element={<Checkout />} />
-            <Route path="Cart" element={<ShopCart />} />
           </Route>
 
           <Route

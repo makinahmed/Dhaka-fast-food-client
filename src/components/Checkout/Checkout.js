@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { makeSubTotal, makeTotal } from "../../functions/functions";
 import { usePostSoldProductMutation } from "../../features/api/apiSlice";
+import { Link, Navigate } from "react-router-dom";
+
 function Checkout() {
     const {
       register,
@@ -13,7 +15,8 @@ function Checkout() {
     } = useForm();
     const [postSoldProduct,{isLoading,isSuccess}] = usePostSoldProductMutation()
   const onSubmit = (data) => {
-      postSoldProduct(data)
+    postSoldProduct(data)
+    
     }
     const cartProducts = useSelector(state=>state?.cart?.cart)
     const subTotal = makeSubTotal(cartProducts);
@@ -86,7 +89,6 @@ function Checkout() {
               <input
                 {...register("phone", {
                   required: true,
-                   
                 })}
                 type="text"
                 id="phone"
@@ -210,7 +212,7 @@ function Checkout() {
               </div>
             </div>
           </div>
-          <input className="placeOrder" value="Place Order" type="submit" />
+          <input type="submit" value="Place Order " className="placeOrder  " />
         </div>
       </div>
     </form>
