@@ -62,9 +62,9 @@ function Navbar() {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/contact">Contact</Link>
-          </li>
+          </li> */}
           {email === adminEmail && (
             <li>
               <Link to="/dashboard">Dashboard</Link>
