@@ -2,18 +2,27 @@
 visibility: hidden;
 opacity: 0;
 }
-
 nav ul h2 {
-    position: absolute;
-    left: 0;
+position: absolute;
+left: 0;
 }
 .navigation-bar{
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 3;
+transition: top .3s;
 display: flex;
 justify-content: space-between;
 align-items: center;
+background-color: #cccbcb;
 }
+.navigation-bar+div {
+     margin-top: 8rem;
+}
+
 nav ul{
-padding: 2em 0;
+padding: 1em 0;
 width: 80vw;
 display: flex;
 justify-content: space-between;
@@ -26,26 +35,52 @@ list-style-type: none;
 text-decoration: none; 
 color: black;
 }
-
 .logo {
-    position: absolute;
-    left: 0;
-    top: -15px;
-    height: 15rem;
+position: absolute;
+left: 0;
+top: -15px;
+height: 10rem;
+}
+.logo img {
+max-width: 100%;
+height: auto; 
+}
+.search-box {
+outline: none;
+border: none;
+padding: .3em .2em;
+border-radius: 5px;
+margin: .5em;
+background-color: rgba(65, 63, 63, 0.226);
+}
+.navigation-bar ul li:hover a{
+text-decoration: underline;
+text-underline-offset: .5em;
+text-decoration-color: #ffc02260;
+font-weight: bold;
+text-decoration-thickness: .1em;
+transition: text-decoration 3s;
 }
 
-.logo img {
-    max-width: 100%;
-    height: auto; 
+.search-cart {
+     z-index: 55;
+     position:absolute;
+     top: 1em;
+     right: -10em;
 }
+.search-cart div {
+     max-height: 15vh;
+     margin: .1em 0;
+}
+
 @media screen and (max-width: 730px) {
 .navigation-bar h2 {
-    display: flex;
+display: flex;
 }
 .cross-btn,.hamburger-btn {
 padding: -1em .5em;
-background-color: black;
-color: white;
+background-color: #cccbcb;
+/* color: #cccbcb; */
 font-size: 3rem;
 border: none;
 border-radius: .1em;
@@ -63,27 +98,24 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-transition: 1s;
+transition: .5s;
 transform: translateX(-15000vh);
 } 
 .hamburger-btn {
-    opacity: 1;
+opacity: 1;
 }
 .cross-btn {
-    opacity: 1;
-    position: absolute;
-    top: 1em;
-    right: 1em;
+opacity: 1;
+position: absolute;
+top: 1em;
+right: 1em;
 }
 nav ul h2 {
- position: absolute;   
- left: 1em;
- top: 2em;
+position: absolute;   
+left: 1em;
+top: 2em;
 }
 .responsive_nav{
-    transform: none;
-    
+transform: none;
 }
-
 }
-

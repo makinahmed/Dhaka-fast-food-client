@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { usePostBlogMutation } from "../../features/api/apiSlice";
 import "./addblogs.css";
 function AddBlogs() {
@@ -11,6 +12,8 @@ function AddBlogs() {
     setFileList(e.target.files[0]);
   };
 
+
+
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", fileList);
@@ -19,21 +22,29 @@ function AddBlogs() {
       method: "POST",
       body: formData,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json()
+      })
       .then((link) => (data.image = link.data.image.url))
       .finally(() => {
-        console.log(data, "data");
-        postBlog(data)
-        reset()
+        postBlog(data);
+        reset();
+         if (isLoading) {
+           toast.loading("Loading....", { id: "postBlog" });
+         }
+         if (isSuccess) {
+           toast.success("Successfully Added!", { id: "postBlog" });
+         }
+         if (isError) {
+           toast.error("Failed", { id: "postBlog" });
+         }
       });
   };
- 
- 
 
   return (
     <div>
-      {isLoading && <h1 className="text-danger">Loading..........</h1>}
-      {isError && <h1 className="text-danger">Error Occured..........</h1>}
+      {/* {isLoading && <h1 className="text-danger">Loading..........</h1>}
+      {isError && <h1 className="text-danger">Error Occured..........</h1>} */}
       <form onSubmit={handleSubmit(onSubmit)} className="blog-form">
         <div className="container">
           <div className="row">

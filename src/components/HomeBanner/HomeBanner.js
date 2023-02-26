@@ -3,7 +3,7 @@ import "./homebanner.css";
 import bannerImg from "../../asstes/h1-banner.png";
 import { Link, useNavigate } from "react-router-dom";
 function HomeBanner() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="home-banner-container">

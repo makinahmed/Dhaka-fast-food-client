@@ -23,13 +23,13 @@ function SignUpForm() {
     dispatch(createUser(data));
     postUser(data);
     if (isLoading) {
-      toast.loading("Loading....", { id: "register" });
+      toast.loading("Loading....", { id: "createUser" });
     }
     if (isSuccess) {
-      toast.success("You have Successfully Registered!", { id: "register" });
+      toast.success("You have Successfully Registered!", { id: "createUser" });
     }
     if (isError) {
-      toast.error("Registration Failed", { id: "register" });
+      toast.error("Registration Failed", { id: "createUser" });
     }
   };
 

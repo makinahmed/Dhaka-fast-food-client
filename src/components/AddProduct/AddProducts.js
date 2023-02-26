@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { usePostProductMutation } from "../../features/api/apiSlice";
 import "./addproducts.css";
 
 function AddProducts() {
-  const [postProduct, { isError, isLoading   }] =
+  const [postProduct, { isError, isSuccess,isLoading }] =
     usePostProductMutation();
   const key = "d3150d32256faac89674b55ff1a3d474";
   const { register, handleSubmit, reset } = useForm();
@@ -37,7 +38,16 @@ function AddProducts() {
       .finally(() => {
          
         postProduct(data)
-          reset();
+        reset();
+        if (isLoading) {
+          toast.loading("Loading....", { id: "postProduct" });
+        }
+        if (isSuccess) {
+          toast.success("Successfully Added!", { id: "postProduct" });
+        }
+        if (isError) {
+          toast.error("Failed", { id: "postProduct" });
+        }
       })
   };
 
