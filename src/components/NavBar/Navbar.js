@@ -117,6 +117,7 @@ function Navbar() {
                   fontSize: "5rem",
                   borderRadius: "5px",
                   padding: "10px",
+                  cursor: "pointer",
                 }}
               />
             </li>
@@ -126,7 +127,7 @@ function Navbar() {
                 onChange={handleSearch}
                 type="text"
                 onBlur={handOnBlue}
-                style={hide?search:expanded}
+                style={hide ? search : expanded}
               />
               <BsSearch
                 onClick={handelSearchBar}
@@ -134,11 +135,20 @@ function Navbar() {
                   fontSize: "4rem",
                   borderRadius: "5px",
                   padding: "10px",
+                  cursor: "pointer",
                 }}
               />
             </li>
             <li>
-              {email && <button onClick={handleSignOut}>Log out</button>}
+              {email && (
+                <button
+                  className="border-0"
+                  onClick={handleSignOut}
+                  style={{ backgroundColor: "#cccbcb" }}
+                >
+                  Log out
+                </button>
+              )}
               {!email && <Link to="/login">Log In</Link>}
             </li>
             <button onClick={showNavbar} className="cross-btn">
@@ -149,7 +159,7 @@ function Navbar() {
       </div>
       <div className="search-cart">
         {products?.map((product) => (
-          <TopRecipeCart product={product} />
+          <TopRecipeCart product={product} search="search" />
         ))}
       </div>
     </div>
@@ -158,7 +168,7 @@ function Navbar() {
 
 export default Navbar;
 
-/* 
+/*
 
 
 {products?.map((product) => (

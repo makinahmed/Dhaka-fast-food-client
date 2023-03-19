@@ -9,7 +9,10 @@
 .feature-text {
     margin: 0 2em;
 }
-.feature-cart h2 {
+.feature-text h2 {
     font-size: 1.8rem;
     font-weight: 700;
+}
+.feature-text .title {
+    font-size: 1.5rem;
 }

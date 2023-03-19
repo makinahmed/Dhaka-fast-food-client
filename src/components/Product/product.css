@@ -21,3 +21,6 @@ margin-right: 2em;
 .product-details span {
     font-size: 2rem;
 }
+.product-details:hover{
+    color: #ffc222;   
+}

@@ -1,3 +1,5 @@
+import { productDiscount } from "../../functions/functions";
+
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
@@ -9,24 +11,29 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, { payload }) => {
-      const isExist = state?.cart?.find(
-        (product) => product._id === payload._id
-      );
+      const price = productDiscount(payload);
 
-      !isExist &&
-        state?.cart?.push({
-          ...payload,
-          quantity: 1,
-          order: state.cart.length,
-        });
+     const currentProduct = { ...payload, ...price };
+       const isExist = state?.cart?.find(
+          (product) => product._id === currentProduct._id
+        );
+      if (!isExist) {
+        state.cart = [
+          ...state.cart,
+          {
+            ...currentProduct,
+            quantity: 1,
+            order: state.cart.length,
+          },
+        ];
+      }
 
       if (isExist) {
         isExist.quantity = isExist.quantity + 1;
         state.cart
-          .filter((product) => product._id !== payload._id)
+          .filter((product) => product._id !== currentProduct._id)
           .push(isExist);
       }
-
       state?.cart.sort((a, b) => a.order - b.order);
     },
     addQuantity: (state, { payload }) => {

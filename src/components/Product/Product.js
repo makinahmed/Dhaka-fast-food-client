@@ -9,9 +9,18 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/api/cartSlice";
 import Cart from "../Cart/Cart";
 function Product() {
+  const dispatch = useDispatch()
   const { data, isLoading, isSuccess } = useGetProductsQuery();
   let { id } = useParams();
   const product = data?.find((p) => p._id === id);
+
+
+   const handleOnclick = (product) => {
+     dispatch(addToCart(product));
+     const cart = document.querySelector(".shop-cart-container");
+     cart.classList.add("hide_cart");
+   };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -26,13 +35,18 @@ function Product() {
             <Rating
               placeholderRating={product?.Rating}
               emptySymbol={
-                <img src={empty} style={{ height: "30px", width: "30px" }} />
+                <img
+                  src={empty}
+                  style={{ height: "30px", width: "30px" }}
+                  alt=""
+                />
               }
               placeholderSymbol={
                 <img
                   src={fill}
                   className="icon"
                   style={{ height: "30px", width: "30px" }}
+                  alt=""
                 />
               }
               fullSymbol={
@@ -40,6 +54,7 @@ function Product() {
                   src={fill}
                   className="icon"
                   style={{ height: "30px", width: "30px" }}
+                  alt=""
                 />
               }
             />
@@ -48,8 +63,11 @@ function Product() {
             <span>${product?.Price}</span>
           </div>
           <hr />
-          <button onClick={() => addToCart(product)} className="addtocart my-5">
-            Add TO cart
+          <button
+            onClick={() => handleOnclick(product)}
+            className="addtocart my-5"
+          >
+            Add To cart
           </button>
           <div>
             <hr />

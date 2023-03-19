@@ -29,13 +29,18 @@ function ProductCart({ product }) {
           <Rating
             placeholderRating={product?.Rating}
             emptySymbol={
-              <img src={empty} style={{ height: "20px", width: "20px" }} />
+              <img
+                src={empty}
+                style={{ height: "20px", width: "20px" }}
+                alt=""
+              />
             }
             placeholderSymbol={
               <img
                 src={fill}
                 className="icon"
                 style={{ height: "20px", width: "20px" }}
+                alt=""
               />
             }
             fullSymbol={
@@ -43,6 +48,7 @@ function ProductCart({ product }) {
                 src={fill}
                 className="icon"
                 style={{ height: "20px", width: "20px" }}
+                alt=""
               />
             }
           />

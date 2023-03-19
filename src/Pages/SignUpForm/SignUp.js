@@ -22,16 +22,21 @@ function SignUpForm() {
   const onSubmit = (data) => {
     dispatch(createUser(data));
     postUser(data);
-    if (isLoading) {
-      toast.loading("Loading....", { id: "createUser" });
-    }
-    if (isSuccess) {
-      toast.success("You have Successfully Registered!", { id: "createUser" });
-    }
-    if (isError) {
-      toast.error("Registration Failed", { id: "createUser" });
-    }
   };
+
+  useEffect(() => {
+     if (isLoading) {
+       toast.loading("Loading....", { id: "createUser" });
+     }
+     if (isSuccess && !isLoading) {
+       toast.success("You have Successfully Registered!", {
+         id: "createUser",
+       });
+     }
+     if (!isSuccess && !isLoading && isError) {
+       toast.error("Registration Failed", { id: "createUser" });
+     }
+  },[isLoading,isSuccess,isError])
 
   useEffect(() => {
     if (!isLoading && email) {

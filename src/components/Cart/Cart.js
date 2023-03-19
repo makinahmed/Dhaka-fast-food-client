@@ -1,21 +1,24 @@
 import React, { useRef, useState } from "react";
 import "./cart.css";
 import { RxCross1 } from "react-icons/rx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { makeSubTotal, makeTotal  } from "../../functions/functions";
+import { makeSubTotal, makeTotal } from "../../functions/functions";
 import Empty from "../Empty/Empty";
+import { removeFromCart } from "../../features/api/cartSlice";
 
 function Cart() {
+  const dispatch = useDispatch();
   const shopRef = useRef();
   const handleOnClick = (e) => {
     shopRef.current.classList.toggle("hide_cart");
   };
   let totalPrice;
   const cartProducts = useSelector((state) => state?.cart?.cart);
+
   totalPrice = makeSubTotal(cartProducts);
   totalPrice = makeTotal(totalPrice);
-  
+
   return (
     <div ref={shopRef} className="shop-cart-container ">
       <div className="d-flex justify-content-between sc-title">
@@ -24,13 +27,16 @@ function Cart() {
           <RxCross1 />
         </span>
       </div>
-      {!cartProducts?.length && <Empty title="No Cart Added!"/>}
+      {!cartProducts?.length && <Empty title="No Cart Added!" />}
       <div className="only-cart">
         {cartProducts?.map((product) => (
           <div className="shopping-cart ">
             <div className="d-flex ">
               <div>
-                <span className="border rounded-circle p-1">
+                <span
+                  className="border rounded-circle p-1"
+                  onClick={() => dispatch(removeFromCart(product))}
+                >
                   <RxCross1 />
                 </span>
               </div>

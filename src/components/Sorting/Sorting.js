@@ -13,19 +13,7 @@ function Sorting() {
   const handleOnChange = (e) => {
     setSortType(e.target.value);
     console.log(sortType);
-    // if (sortType === "A to Z") {
 
-    //   aToz(data);
-    // }
-
-    // if (sortType === "Price") {
-
-    //   price(data);
-    // }
-    // if (sortType === "Rating") {
-
-    //   rating(data);
-    // }
   };
 
   return (
@@ -33,9 +21,9 @@ function Sorting() {
       <p className="text-muted">Sowing 1-12 of 52 results</p>
 
       <select value={sortType} onChange={handleOnChange}>
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
+        <option value="atoz">A to Z</option>
+        <option value="ascending">Ascending</option>
+        <option value="descending">Descending</option>
       </select>
     </div>
   );

@@ -1,11 +1,12 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { addToCart } from "../../features/api/cartSlice";
 
-function TopRecipeCart({ product }) {
-  const dispatch = useDispatch()
+function TopRecipeCart({ product, search }) {
+  console.log(search);
+  const dispatch = useDispatch();
   let prevPrice;
   let discount = product?.discount;
   if (product?.price) {
@@ -17,11 +18,12 @@ function TopRecipeCart({ product }) {
   let totalDiscountAmount = (prevPrice * discount) / 100;
 
   let currentPrice = prevPrice - totalDiscountAmount;
-const handleOnclick = (product) => {
-  dispatch(addToCart(product));
-  const cart = document.querySelector(".shop-cart-container");
-  cart.classList.add("hide_cart");
-};
+
+  const handleOnclick = (product) => {
+    dispatch(addToCart(product));
+    const cart = document.querySelector(".shop-cart-container");
+    cart.classList.add("hide_cart");
+  };
   return (
     <div className="col-sm-12 col-md-6 recepie-container">
       <div className="recipe">
@@ -29,7 +31,10 @@ const handleOnclick = (product) => {
           <img src={product?.image} alt="" />
         </div>
         <div className="recepie-text">
-          <Link to={`/product/${product._id}`} className="recepie-title fw-bold text-decoration-none text-dark">
+          <Link
+            to={`/product/${product._id}`}
+            className="recepie-title fw-bold text-decoration-none text-dark"
+          >
             {product?.firsttitle}
           </Link>
           <p className="text-muted">{product?.category}</p>
@@ -40,16 +45,18 @@ const handleOnclick = (product) => {
             ${currentPrice}
           </span>
         </div>
-        <div className="shop-icon" onClick={() => handleOnclick(product)}>
-          <AiOutlineShoppingCart
-            style={{
-              backgroundColor: "#ffc222",
-              fontSize: "5rem",
-              borderRadius: "5px",
-              padding: "10px",
-            }}
-          />
-        </div>
+        {!search && (
+          <div className="shop-icon" onClick={() => handleOnclick(product)}>
+            <AiOutlineShoppingCart
+              style={{
+                backgroundColor: "#ffc222",
+                fontSize: "5rem",
+                borderRadius: "5px",
+                padding: "10px",
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

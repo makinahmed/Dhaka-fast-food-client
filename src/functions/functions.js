@@ -3,7 +3,6 @@ export const makeSubTotal = (cartProducts) => {
     let price = product.currentPrice;
     let quantity = parseInt(product.quantity);
     let subTotal = price * quantity;
-
     return subTotal;
   });
 };
@@ -38,10 +37,10 @@ export const cuponDiscount = (cupon, total) => {
 export const sorting = (products, category) => {
   console.log( category,'parameter');
   let data = [...products];
-  let sortAtoZ;
-  
+
+
   if (category === "A to Z") {
-  
+
     data = data?.sort((a, b) =>
       a?.firsttitle?.toLowerCase() > b?.firsttitle?.toLowerCase() ? 1 : -1
     );

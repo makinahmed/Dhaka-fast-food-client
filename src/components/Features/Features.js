@@ -8,7 +8,7 @@ function Features() {
     <div className="container-fluid my-5">
       <div className="row g-4">
         <div1 className="col-sm-12 col-md-6 col-lg-4 text-sm-left">
-          <div className="feature-cart  ">
+          <div className="feature-cart">
             <GiScooter style={{ fontSize: "8rem", color: "#ffc107" }} />
             <div className="feature-text">
               <h2>Free shipping</h2>

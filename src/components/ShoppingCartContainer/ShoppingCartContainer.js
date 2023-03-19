@@ -5,17 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addQuantity, removeFromCart } from "../../features/api/cartSlice";
 import { makeSubTotal, makeTotal } from "../../functions/functions";
 function ShoppingCartContainer({ product }) {
- 
+
   const dispatch = useDispatch();
   const handleOnchange = (e) => {
-    const value = e.target.value;  
+    const value = e.target.value;
     dispatch(addQuantity({ value, product }));
   };
   return (
     <div className="shopping-cart-container">
       <span onClick={() => dispatch(removeFromCart(product))} className="cross">
-         
-        X 
+        X
       </span>
       <img className="cart-imgg" src={product?.image} alt="" />
       <span>{product?.currentPrice?.toFixed(2)}</span>
