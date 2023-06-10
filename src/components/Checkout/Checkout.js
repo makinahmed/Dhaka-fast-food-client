@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { makeSubTotal, makeTotal } from "../../functions/functions";
 import { usePostSoldProductMutation } from "../../features/api/apiSlice";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 function Checkout() {
+
     const {
       register,
       handleSubmit,
@@ -16,11 +18,20 @@ function Checkout() {
     const [postSoldProduct,{isLoading,isSuccess}] = usePostSoldProductMutation()
   const onSubmit = (data) => {
     postSoldProduct(data)
-    
-    }
+
+  }
+    const navigate = useNavigate();
     const cartProducts = useSelector(state=>state?.cart?.cart)
     const subTotal = makeSubTotal(cartProducts);
   const total = makeTotal(subTotal);
+
+
+  const handlePlaceOrder = () => {
+    toast.success("Successfully Placed!", { id: "Placed" });
+    navigate("/");
+}
+
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="container-fluid">
       <div className="row">
@@ -212,7 +223,7 @@ function Checkout() {
               </div>
             </div>
           </div>
-          <input type="submit" value="Place Order " className="placeOrder  " />
+          <input type="submit" onClick={handlePlaceOrder} value="Place Order " className="placeOrder  " />
         </div>
       </div>
     </form>

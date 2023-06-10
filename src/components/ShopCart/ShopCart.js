@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useCheckCuponQuery  } from "../../features/api/apiSlice";
- 
+
 import {
   cuponDiscount,
   makeSubTotal,
@@ -23,7 +23,7 @@ function ShopCart() {
 
   let discountForCupon;
   const onClickHandler = () => {
-  
+
     if (isSuccess) {
       console.log(data);
    }
@@ -53,7 +53,7 @@ function ShopCart() {
               <ShoppingCartContainer product={product} />
             ))}
           </div>
-          {!cartProducts?.length && <Empty title="No Cart Added!" />}
+          {!cartProducts?.length && <Empty title="Cart is empty!" />}
         </div>
         <div className=" col-sm-12 col-md-4">
           <h2 className="ms-sm-2 ms-md-2 d-flex fw-bold">CART TOTALS</h2>
@@ -88,11 +88,11 @@ function ShopCart() {
             </div>
             <div>
               <h2>Total:</h2>
-              <h2>${0}</h2>
+              <h2>${total}</h2>
             </div>
             <div>
               <h2>Delivery Charge:</h2>
-              <h2>${discountForCupon || total}</h2>
+              <h2>0</h2>
             </div>
           </div>
           <Link to="/checkout" className="proceed-btn">

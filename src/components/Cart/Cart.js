@@ -27,7 +27,7 @@ function Cart() {
           <RxCross1 />
         </span>
       </div>
-      {!cartProducts?.length && <Empty title="No Cart Added!" />}
+      {!cartProducts?.length && <Empty title="Cart is empty!" />}
       <div className="only-cart">
         {cartProducts?.map((product) => (
           <div className="shopping-cart ">
