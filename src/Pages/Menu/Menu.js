@@ -16,20 +16,20 @@ function Menu() {
           <RotatingLines
             strokeWidth="5"
             animationDuration="0.75"
-            width="200"
+            width="100"
             strokeColor=" #ffc222"
           />
         </div>
       )}
-      {
-        isSuccess && <div>
+      {isSuccess && (
+        <div>
           <Banner title="Menu" />
           <PopularDishes />
           <Trending />
           <Features />
           <Cart />
         </div>
-      }
+      )}
     </div>
   );
 }

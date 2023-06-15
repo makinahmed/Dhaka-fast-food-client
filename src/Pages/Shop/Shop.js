@@ -14,8 +14,8 @@ const navRef = useRef()
    const showLeftBar = () => {
      navRef.current.classList.toggle("res_show_left_bar");
    };
-  
-  
+
+
   return (
     <div>
       {isLoading && (
@@ -23,7 +23,7 @@ const navRef = useRef()
           <RotatingLines
             strokeWidth="5"
             animationDuration="0.75"
-            width="200"
+            width="100"
             strokeColor=" #ffc222"
           />
         </div>

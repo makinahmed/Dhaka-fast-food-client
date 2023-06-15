@@ -16,28 +16,30 @@ function Home() {
    const {  isLoading,isSuccess   } = useGetProductsQuery();
   return (
     <div>
-      {isLoading && (
+      {!isSuccess && (
         <div className="d-flex align-items-center justify-content-center">
           <RotatingLines
             strokeWidth="5"
             animationDuration="0.75"
-            width="200"
+            width="100"
             strokeColor=" #ffc222"
           />
         </div>
       )}
-     {isSuccess && <div>
-        <HomeBanner />
-        <MenuList />
-        <ShowPieceCart />
-        <PopularDishes />
-        <Offer />
-        <TopRecipes />
-        <ClientSays />
-        <Trending />
-        <LatestNews />
-        <Cart />
-      </div>}
+      {isSuccess && (
+        <div>
+          <HomeBanner />
+          <MenuList />
+          <ShowPieceCart />
+          <PopularDishes />
+          <Offer />
+          <TopRecipes />
+          <ClientSays />
+          <Trending />
+          <LatestNews />
+          <Cart />
+        </div>
+      )}
     </div>
   );
 }

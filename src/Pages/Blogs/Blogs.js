@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
- 
+
 import BlogsCart from "../../components/BlogsCart/BlogsCart";
 import SuggestedBlogCart from "../../components/SuggestedBlogCart/SuggestedBlogCart";
 import { RotatingLines } from "react-loader-spinner";
 
 import { useGetBlogQuery } from "../../features/api/apiSlice";
 import "./blogs.css";
- 
+
 import Banner from "../../components/Banner/Banner";
 function Blogs() {
   const { data, isLoading,isSuccess } = useGetBlogQuery();
@@ -21,8 +21,8 @@ function Blogs() {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
- 
-  
+
+
   return (
     <>
       <div className="my-auto ">
@@ -31,7 +31,7 @@ function Blogs() {
             <RotatingLines
               strokeWidth="5"
               animationDuration="0.75"
-              width="200"
+              width="100"
               strokeColor=" #ffc222"
             />
           </div>

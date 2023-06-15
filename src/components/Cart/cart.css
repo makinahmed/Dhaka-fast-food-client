@@ -1,5 +1,5 @@
 .shop-cart-container{
-width: 35rem;
+width: 40rem;
 color: black;
 background-color:white;
 height: 100vh;
@@ -55,4 +55,11 @@ padding: .3em;
     font-weight: bold;
     margin: .5em auto;
     text-decoration: none;
+}
+
+@media screen and  (max-width: 500) {
+    .shop-cart-container{
+width: 100%;
+}
+
 }
