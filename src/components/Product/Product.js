@@ -60,7 +60,7 @@ function Product() {
             />
 
             <p className="my-5">{product?.description}</p>
-            <span>${product?.Price}</span>
+            <span>৳{product?.Price}</span>
           </div>
           <hr />
           <button

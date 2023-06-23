@@ -12,7 +12,7 @@ function ShowPieceCart() {
             <div className="cart-texts">
               <h2 className="cart-title">Any day offers</h2>
               <p className="cart-text"> PHENOMENON BURGER TASTE</p>
-              <div className="price">$12.90</div>
+              <div className="price">৳12.90</div>
             </div>
             <div className="cart-img-container">
               <div className="d1">
@@ -26,7 +26,7 @@ function ShowPieceCart() {
             <div className="cart-texts">
               <h2 className="cart-title">Any day offers</h2>
               <p className="cart-text">NEW PHENOMENON BURGER TASTE</p>
-              <div className="price">$12.90</div>
+              <div className="price">৳12.90</div>
             </div>
             <div className="cart-img-container">
               <div className="d1">

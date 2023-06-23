@@ -20,7 +20,7 @@ function HomeBanner() {
         </div>
         <div className="banner-btns">
           <Link to="/menu">Order Now</Link>
-          <span className="b-price">$12.99</span>
+          <span className="b-price">৳12.99</span>
         </div>
       </div>
       <div className="h-banner-img">

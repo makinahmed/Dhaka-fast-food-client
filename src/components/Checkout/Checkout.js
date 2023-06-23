@@ -8,29 +8,26 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 function Checkout() {
-
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
-    const [postSoldProduct,{isLoading,isSuccess}] = usePostSoldProductMutation()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const [postSoldProduct, { isLoading, isSuccess }] =
+    usePostSoldProductMutation();
+  const products = useSelector((state) => state.cart.cart);
   const onSubmit = (data) => {
-    postSoldProduct(data)
-
-  }
-    const navigate = useNavigate();
-    const cartProducts = useSelector(state=>state?.cart?.cart)
-    const subTotal = makeSubTotal(cartProducts);
-  const total = makeTotal(subTotal);
-
-
-  const handlePlaceOrder = () => {
+    data = { ...data, status: "Pending", products: products };
+    console.log({data})
+    postSoldProduct(data);
     toast.success("Successfully Placed!", { id: "Placed" });
-    navigate("/");
-}
-
+    // navigate("/");
+  };
+  const navigate = useNavigate();
+  const cartProducts = useSelector((state) => state?.cart?.cart);
+  const subTotal = makeSubTotal(cartProducts);
+  const total = makeTotal(subTotal);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="container-fluid">
@@ -132,20 +129,20 @@ function Checkout() {
           <div className="order-list">
             <div>
               <h3>Product(s)</h3>
-              <h3>$Subtotal</h3>
+              <h3>৳Subtotal</h3>
             </div>
             {cartProducts?.map((product) => (
               <div>
                 <span>
                   {product?.firsttitle} x {product?.quantity}
                 </span>
-                <span>${product?.currentPrice * product?.quantity}</span>
+                <span>৳{product?.currentPrice * product?.quantity}</span>
               </div>
             ))}
 
             <div>
               <h3>Subtotal</h3>
-              <h3>${total}</h3>
+              <h3>৳{total}</h3>
             </div>
             <div>
               <h3>Shipping</h3>
@@ -172,7 +169,7 @@ function Checkout() {
             </div>
             <div>
               <h3>Total</h3>
-              <h3>${total}</h3>
+              <h3>৳{total}</h3>
             </div>
             <div>
               <h3>Payment</h3>
@@ -223,7 +220,12 @@ function Checkout() {
               </div>
             </div>
           </div>
-          <input type="submit" onClick={handlePlaceOrder} value="Place Order " className="placeOrder  " />
+          <input
+            type="submit"
+            // onClick={handlePlaceOrder}
+            value="Place Order "
+            className="placeOrder  "
+          />
         </div>
       </div>
     </form>

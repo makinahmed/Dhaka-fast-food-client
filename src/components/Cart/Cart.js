@@ -55,7 +55,7 @@ function Cart() {
       <div className="d-flex flex-column sc-bottom">
         <div className="total-amount d-flex justify-content-between">
           <h2>Sub Total</h2>
-          <h2>${totalPrice}</h2>
+          <h2>৳{totalPrice}</h2>
         </div>
         <Link to="/checkout">Checkout</Link>
         <Link to="/cart">View Cart</Link>

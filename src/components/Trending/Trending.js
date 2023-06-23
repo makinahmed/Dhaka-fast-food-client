@@ -14,7 +14,7 @@ function Trending() {
               <h1>Meals</h1>
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
-              <span>$19.90</span>
+              <span>৳19.90</span>
               <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>
@@ -26,7 +26,7 @@ function Trending() {
               <h1>Burgers</h1>
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
-              <span>$12.90</span>
+              <span>৳12.90</span>
               <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>
@@ -38,7 +38,7 @@ function Trending() {
               <h1>Salats</h1>
               <p>NEW PHENOMENON</p>
               <p> Burger Taste</p>
-              <span>$10.90</span>
+              <span>৳10.90</span>
               <Link to="/menu">ORDER NOW</Link>
             </div>
           </div>

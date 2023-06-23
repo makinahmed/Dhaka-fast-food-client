@@ -5,10 +5,10 @@ import SideNav from "../../components/SideNav/SideNav";
 import AdminRouteOutlet from "../../Routes/AdminRouteOutLet";
 
 function Dashboard() {
-  
+
 
   return (
-    <div className="container">
+    <div className="container p-5">
       <div className="row g-5">
         <div className="col-sm-3 border-end">
           <SideNav />

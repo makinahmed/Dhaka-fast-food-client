@@ -28,6 +28,10 @@ import AddCupon from "./components/AddCupon/AddCupon";
 import Product from "./components/Product/Product";
 import AdminRouteOutlet from "./Routes/AdminRouteOutLet";
 import Payment from "./components/stripe/Payment";
+import MyOrders from "./Pages/MyOrders/MyOrders";
+import PendingOrders from "./Pages/PendingOrders/PendingOrders";
+import Allorders from "./Pages/Allorders/Allorders";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +63,8 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/blog" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/myorders" element={<MyOrders />} />
+
           <Route path="/*" element={<PrivateOutlet />}>
             <Route path="cart" element={<ShopCart />} />
             <Route path="payment" element={<Payment />} />
@@ -74,6 +80,23 @@ function App() {
             }
           >
             <Route
+              path=""
+              element={
+                <AdminRouteOutlet>
+                  <Allorders />
+                </AdminRouteOutlet>
+              }
+            />
+            <Route
+              path="pendingorders"
+              element={
+                <AdminRouteOutlet>
+                  <PendingOrders />
+                </AdminRouteOutlet>
+              }
+            />
+
+            <Route
               path="addblog"
               element={
                 <AdminRouteOutlet>
@@ -81,6 +104,7 @@ function App() {
                 </AdminRouteOutlet>
               }
             />
+
             <Route
               path="addproduct"
               element={

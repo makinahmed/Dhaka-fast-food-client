@@ -1,14 +1,12 @@
 import React, { useState } from "react";
- 
+
 import "./addCupon.css";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { usePostCuponMutation } from "../../features/api/apiSlice";
 
 function AddCupon() {
  const [cupon, setCupon] = useState({});
- const [postCupon, { isLoading, isSuccess, isError }] = usePostCuponMutation();
- const onChangeHandler = (e) => {
+  const onChangeHandler = (e) => {
    let obj = {};
    let name = e.target.name;
    let value = e.target.value;
@@ -18,20 +16,19 @@ function AddCupon() {
  };
 
  const onClickHandler = () => {
-   postCupon(cupon);
 
-   if (isLoading) {
-     toast.loading("Loading....", { id: "cupon1" });
-   }
-   if (isSuccess) {
-     toast.success("Success", { id: "cupon1" });
-   }
-   if (isError) {
-     toast.error("Failed", { id: "cupon1" });
-   }
-   setCupon({});
+  //  if (isLoading) {
+  //    toast.loading("Loading....", { id: "cupon1" });
+  //  }
+  //  if (isSuccess) {
+  //    toast.success("Success", { id: "cupon1" });
+  //  }
+  //  if (isError) {
+  //    toast.error("Failed", { id: "cupon1" });
+  //  }
+  //  setCupon({});
  };
-   
+
   return (
     <div className="dashboard mt-5">
       <label htmlFor="cupon">Cupon</label>

@@ -63,8 +63,8 @@ function ProductCart({ product }) {
 
         <div className="cart-bottom">
           <div className="product-price">
-            <h3 className="prev-price">${price?.prevPrice}</h3>
-            <h3 className="current-price ">${price?.currentPrice}</h3>
+            <h3 className="prev-price">৳{price?.prevPrice}</h3>
+            <h3 className="current-price ">৳{price?.currentPrice}</h3>
           </div>
 
           <AiOutlineShoppingCart

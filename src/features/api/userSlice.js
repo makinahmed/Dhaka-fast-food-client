@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
 export  const userApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
   }),
   endpoints: (builder) => ({
     userApi: builder.mutation({

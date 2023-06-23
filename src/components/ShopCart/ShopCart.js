@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useCheckCuponQuery  } from "../../features/api/apiSlice";
 
 import {
   cuponDiscount,
@@ -13,28 +12,20 @@ import ShoppingCartContainer from "../ShoppingCartContainer/ShoppingCartContaine
 import "./shopCart.css";
 function ShopCart() {
   const [cupon, setCupon] = useState();
-  const { data, isLoading, isSuccess } = useCheckCuponQuery({cupon});
-  const cartProducts = useSelector((state) => state?.cart?.cart);
+   const cartProducts = useSelector((state) => state?.cart?.cart);
   const subtotal = makeSubTotal(cartProducts);
   const total = makeTotal(subtotal);
   const onChangeHandler = (e) => {
     setCupon(e.target.value);
   };
 
-  let discountForCupon;
+
   const onClickHandler = () => {
 
-    if (isSuccess) {
-      console.log(data);
-   }
+
   };
-  useEffect(() => {
-    if (!isLoading) {
-      console.log(" ");
-    }
-  });
-  isLoading && console.log("object");
-  isSuccess && console.log("2");
+
+ 
   return (
     <div className="container-fluid">
       <div className="row g-5">
@@ -84,11 +75,11 @@ function ShopCart() {
             </div>
             <div>
               <h2>Vat:</h2>
-              <h2>${0}</h2>
+              <h2>৳{0}</h2>
             </div>
             <div>
               <h2>Total:</h2>
-              <h2>${total}</h2>
+              <h2>৳{total}</h2>
             </div>
             <div>
               <h2>Delivery Charge:</h2>

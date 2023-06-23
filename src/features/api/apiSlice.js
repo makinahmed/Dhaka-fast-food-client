@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
   }),
   tagTypes: ["Products"],
   endpoints: (builder) => ({
@@ -27,7 +27,7 @@ export const productApi = createApi({
 export const blogApi = createApi({
   reducerPath: "blogApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
   }),
   endpoints: (builder) => ({
     postBlog: builder.mutation({
@@ -49,47 +49,72 @@ export const blogApi = createApi({
 export const soldApi = createApi({
   reducerPath: "soldApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
+    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
   }),
+  tagTypes: ["Products"],
   endpoints: (builder) => ({
+    getMyOrders: builder.query({
+      query: () => ({
+        url: "sold",
+      }),
+    }),
     postSoldProduct: builder.mutation({
       query: (data) => ({
         url: "sold",
         body: data,
         method: "POST",
       }),
+      invalidatesTags: ["Products"],
+    }),
+    acceptSoldProduct: builder.mutation({
+      query: (data) => {
+        return {
+          url: "sold",
+          body: data,
+          method: "PUT",
+        };
+      },
     }),
   }),
 });
 
-export const cuponApi = createApi({
-  reducerPath: "cuponApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-backend.vercel.app/",
-  }),
 
-  endpoints: (builder) => ({
-    checkCupon: builder.query({
-      query: (data) => ({
-        url: "checkcupon",
-        body: data,
-      }),
-    }),
-    postCupon: builder.mutation({
-      query: (body) => ({
-        url: "cupon",
-        body,
-        method: "POST",
-      }),
-    }),
-  }),
-});
+// export const myOrderApi = createApi({
+//   reducerPath: "myOrderApi",
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: "http://localhost:8000/",
+//   }),
+
+//   endpoints: (builder) => ({
+//     getMyOrders: builder.query({
+//       query: () => ({
+//         url: "myorders",
+//       }),
+
+//     }),
+
+//   }),
+// });
+
+
+
+// export const orderSlice = createApi({
+//   baseQuery: fetchBaseQuery({
+//     baseUrl: "http://localhost:5000/",
+//   }),
+//   endpoints: (builder) => ({
+//     orderApi: builder.mutation({
+//       query: (data) => ({
+//         url: "allorders",
+//         method: "POST",
+//         body: data,
+//       }),
+//     }),
+//   }),
+// });
 
 export const { usePostProductMutation, useGetProductsQuery } = productApi;
 export const { usePostBlogMutation, useGetBlogQuery } = blogApi;
-export const { usePostSoldProductMutation } = soldApi;
-export const {
-  usePostCuponMutation,
-  useDeleteCuponMutation,
-  useCheckCuponQuery
-} = cuponApi;
+export const { usePostSoldProductMutation,useGetMyOrdersQuery ,useAcceptSoldProductMutation} = soldApi;
+
+

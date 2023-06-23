@@ -36,7 +36,7 @@ function Navbar() {
   let adminEmail = "admin@gmail.com";
   const { email } = useSelector((state) => state?.auth);
   const { data, isSuccess, isError } = useGetProductsQuery();
-  console.log(data, "dataaaaaaa");
+
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -67,7 +67,6 @@ function Navbar() {
       setProducts([]);
     }
   };
-
   const handOnBlue = () => {
     setTimeout(() => {
       setProducts([]);
@@ -76,6 +75,7 @@ function Navbar() {
   const handelSearchBar = () => {
     setHide(!hide);
   };
+
   return (
     <div>
       <div className="navigation-bar position-relative" id="navbar">
@@ -102,9 +102,17 @@ function Navbar() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            {/* <li>
-            <Link to="/contact">Contact</Link>
-          </li> */}
+            {email !== adminEmail && email !== "" && (
+              <li>
+                <Link to="/myorders">My Orders</Link>
+              </li>
+            )}
+
+            {!adminEmail && (
+              <li>
+                <Link to="/myorders">My Orders</Link>
+              </li>
+            )}
             {email === adminEmail && (
               <li>
                 <Link to="/dashboard">Dashboard</Link>
@@ -123,7 +131,7 @@ function Navbar() {
             </li>
             <li className="search-wrapper position-relative">
               <input
-                className="search-box "
+                className="search-box"
                 onChange={handleSearch}
                 type="text"
                 onBlur={handOnBlue}
