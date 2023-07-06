@@ -29,7 +29,7 @@ function Allorders() {
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Contact</th>
-            <th>Items</th>
+            {/* <th>Items</th> */}
             <th scope="col">Status</th>
           </tr>
         </thead>
@@ -42,13 +42,13 @@ function Allorders() {
               <td>{order?.email}</td>
 
               <td>{order?.phone}</td>
-              {order.products && (
+              {/* {order.products && (
                 <td>
                   {order?.products.map((item) => (
                     <td>{item?.firsttitle}|</td>
                   ))}
                 </td>
-              )}
+              )} */}
               <td className={`${order.status === "Pending" && "text-danger"}`}>
                 {order?.status === true && (
                   <span className="text-success">Approved</span>
