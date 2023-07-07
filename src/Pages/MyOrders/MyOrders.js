@@ -5,7 +5,13 @@ import { RotatingLines } from "react-loader-spinner";
 function MyOrders() {
   const { data } = useGetMyOrdersQuery();
   const { email } = useSelector((state) => state?.auth);
-  const orders = data?.filter(order => order?.email === email);
+  console.log(email);
+  console.log(data)
+  let orders;
+  if (email && data) {
+    orders = data?.filter(order => order?.email === email);
+
+  }
 
   return (
     <table class="table table-striped table-hover">
@@ -51,7 +57,7 @@ function MyOrders() {
             </tr>
           ))}
         </tbody>
-      
+
     </table>
   );
 }

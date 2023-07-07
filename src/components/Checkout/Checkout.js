@@ -22,7 +22,7 @@ function Checkout() {
     console.log({data})
     postSoldProduct(data);
     toast.success("Successfully Placed!", { id: "Placed" });
-    // navigate("/");
+    navigate("/");
   };
   const navigate = useNavigate();
   const cartProducts = useSelector((state) => state?.cart?.cart);
