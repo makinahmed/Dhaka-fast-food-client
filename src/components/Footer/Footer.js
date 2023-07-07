@@ -9,8 +9,8 @@ function Footer() {
           <div className="address">
             <h1 className="address-title">ADDRESS</h1>
             <span>570 8th Ave,</span>
-            <span>New York,NY 10018</span>
-            <span>United States</span>
+            <span>1416, Mirpur-1,Dhaka</span>
+            <span>Bangladesh</span>
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-3">
