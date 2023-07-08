@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
+    baseUrl: "http://localhost:8000/",
   }),
   tagTypes: ["Products"],
   endpoints: (builder) => ({
@@ -27,7 +27,7 @@ export const productApi = createApi({
 export const blogApi = createApi({
   reducerPath: "blogApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
+    baseUrl: "http://localhost:8000/",
   }),
   endpoints: (builder) => ({
     postBlog: builder.mutation({
@@ -49,7 +49,7 @@ export const blogApi = createApi({
 export const soldApi = createApi({
   reducerPath: "soldApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dhaka-fast-food-server-vg9b.vercel.app/",
+    baseUrl: "http://localhost:8000/",
   }),
   tagTypes: ["Products"],
   endpoints: (builder) => ({
@@ -57,6 +57,7 @@ export const soldApi = createApi({
       query: () => ({
         url: "sold",
       }),
+      invalidatesTags: ["Product"],
     }),
     postSoldProduct: builder.mutation({
       query: (data) => ({
@@ -64,16 +65,15 @@ export const soldApi = createApi({
         body: data,
         method: "POST",
       }),
-      invalidatesTags: ["Products"],
+      invalidatesTags: ["Product"],
     }),
     acceptSoldProduct: builder.mutation({
-      query: (data) => {
-        return {
-          url: "sold",
-          body: data,
-          method: "PUT",
-        };
-      },
+      query: (data) => ({
+        url: "sold",
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Product"],
     }),
   }),
 });

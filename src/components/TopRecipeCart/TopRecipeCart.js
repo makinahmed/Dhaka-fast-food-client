@@ -5,8 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { addToCart } from "../../features/api/cartSlice";
 
 function TopRecipeCart({ product, search }) {
-  console.log(search);
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
   let prevPrice;
   let discount = product?.discount;
   if (product?.price) {

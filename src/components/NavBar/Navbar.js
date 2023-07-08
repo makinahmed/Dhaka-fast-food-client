@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./navbar.css";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { RxCross1 } from "react-icons/rx";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../features/auth/authSlice";
 import { signOut } from "firebase/auth";
@@ -36,7 +36,7 @@ function Navbar() {
   let adminEmail = "admin@gmail.com";
   const { email } = useSelector((state) => state?.auth);
   const { data, isSuccess, isError } = useGetProductsQuery();
-
+  const navigate = useNavigate();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -45,11 +45,11 @@ function Navbar() {
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(logOut());
+      navigate("/");
       if (!email) {
         toast.success("Log Out Successfully!", { id: "logout" });
       }
     });
-    Navigate("/login");
   };
 
   const handleOnclick = () => {
